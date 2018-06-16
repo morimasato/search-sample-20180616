@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SEARCH API</title>
+</head>
+<body>
+<h1>SEARCH API</h1>
+<p align="right"><a href="/create">CREATE INDEX</a></p>
+<form>
+    <div>
+        <label for="q">キーワード</label>
+        <input type="text" name="q" id="q" value="{{ q }}">
+    </div>
+    <div>
+        <label for="mobile_coupon">クーポン</label>
+        <input type="checkbox" name="mobile_coupon" id="mobile_coupon" value="1"{% if mobile_coupon %} checked="checked"{% endif %}>
+    </div>
+    <div>
+        <label for="latlong">位置情報</label>
+        <input type="text" name="latlong" id="latlong" value="{{ latlong }}">
+    </div>
+    <input type="submit" value="検索">
+</form>
+<hr>
+    <p>{{ number_found }}件見つかりました</p>
+    {% for result in results %}
+        <h3>{{ result.name|safe }}</h3>
+        <div><img src="{{ result.image }}"></div>
+        <p>{{ result.snippet|safe }}</p>
+        <address>{{ result.address }}</address>
+        <address>{{ result.tel }}</address>
+    {% endfor %}
+</body>
+</html>
