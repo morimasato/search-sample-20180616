@@ -52,7 +52,7 @@ class SearchHandler(webapp2.RequestHandler):
             index = search.Index(name='sample')
             # 位置情報で並び替え
             expressions = []
-            if latlong and re.findall(r'^\d+(\.\d+|)\s*,\s*\d+(\.\d+|)$', latlong):
+            if latlong:
                 expressions.append(
                     search.SortExpression(
                         expression='distance(location, geopoint(%s))' % latlong,
