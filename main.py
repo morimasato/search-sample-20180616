@@ -34,7 +34,7 @@ class CreateHandler(webapp2.RequestHandler):
                         ]
                     )
                     index.put(create_document)
-                except Exception, e:
+                except Exception as e:
                     logging.exception("#-- CreateHandler Exception: id:%s exception:%s" % (id, e))
 
         self.redirect('/')
@@ -105,7 +105,7 @@ class SearchHandler(webapp2.RequestHandler):
                 })
             # logging.info("#-- SearchHandler : results:%s" % (results))
 
-        except Exception, e:
+        except Exception as e:
             logging.exception("#-- SearchHandler Error: id:%s exception:%s" % (id, e))
 
         template = JINJA_ENVIRONMENT.get_template('index.html')
